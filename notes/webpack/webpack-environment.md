@@ -1,17 +1,17 @@
-# Webpack 基础
+# Webpack 基础 - 环境
 
-#### 环境
+### 环境
 
 - npm
 - node.js
 
-#### 配置项目
+### 配置项目
 
 1. 使用 `npm init`  后根据指示初始化 `webpack` 项目文件夹（会生成 `package.json`）
 2. 使用 `npm install -g webpack` 安装全局  `webpack` 环境
 3. 使用 `npm install webpack --save-dev` 将 `webpack` 作为项目依赖
 
-#### 创建必要文件/文件夹
+### 创建必要文件/文件夹
 
 创建 `src`文件夹放置主要逻辑文件，`build` 文件夹放置打包编译后的文件，创建 `webpack.config.js` 文件编写 `webpack` 打包配置。
 
@@ -28,7 +28,7 @@ root
  └ package.json
 ```
 
-#### webpack.config.js
+### webpack.config.js
 
 这个文件是 Webpack 打包时的配置，里面包含了许多选项，具体可以查看[官网文档](http://webpack.github.io/docs/configuration.html)。  
 
@@ -100,7 +100,7 @@ module.exports = {
 
   配置文件中用到了 `[name]` 占位符，代表着 `entry` 对象中的 `key`，即 `bundle1` 和 `bundle2` 。除了 `[name]` 占位符外，还有 `[hash]` 占位符和 `[chunkhash]`，分别代表**此次编译的哈希值**和**文件的hash码**。
 
-#### package.json
+### package.json
 
 该文件主要包含了项目的信息，比如作者、版本号、描述、依赖等。有一个 trick 就是可以在这个文件中的 `script` 字段中配置好脚本，然后使用 `npm run xxx` 就可以执行脚本。
 
