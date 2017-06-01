@@ -16,9 +16,11 @@ module.exports = {
                 query: {
                     presets: ['latest']
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader!postcss-loader',
             }
-        ]
-    }
-
-
+        ],
+    },
 };

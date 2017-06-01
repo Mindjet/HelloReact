@@ -1,4 +1,4 @@
-# Webpack基础 - loader
+# Webpack基础 - jsloader
 
 ### 作用
 
