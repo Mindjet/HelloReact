@@ -1,8 +1,12 @@
+'use strict';
 
-import './css/common.css';
+import TextView from './components/text-view.jsx';
+import React from "react";
+import ReactDOM from 'react-dom'
 
 const App = function () {
-    console.log('this is a entry file');
+    ReactDOM.render(<TextView content="This is a TextView"/>, document.getElementById('content'));
 };
 
 new App();
+

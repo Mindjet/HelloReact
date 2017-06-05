@@ -9,12 +9,12 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.js|jsx$/,
                 loader: 'babel-loader',
                 exclude: path.resolve(__dirname, './node_modules/'),
                 include: path.resolve(__dirname, './app/'),
                 query: {
-                    presets: ['latest']
+                    presets: ['latest', 'react']
                 }
             },
             {
