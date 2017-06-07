@@ -1,0 +1,35 @@
+.cpb-container {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.cpb-progressBackground {
+    overflow: hidden;
+    width: 100%;
+    height: 20px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.cpb-progressed {
+    float: left;
+    width: 20%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.cpb-progressWhole {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #666;
+}
+
+.cpb-thumb {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-top: -40px;
+    position: absolute;
+}
