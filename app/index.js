@@ -8,7 +8,18 @@ import './css/demo.css';
 
 const App = function () {
     ReactDOM.render(<TextView content="This is a TextView"/>, document.getElementById('content'));
-    ReactDOM.render(<CuteProgressBar/>, document.getElementById('cute-progress-bar'));
+    ReactDOM.render(<CuteProgressBar progressed={0.5}
+                                     thumbColor='black' backgroundColor='#666' progressedColor='#333'
+                                     onProgress={(progress) => onProgress(progress)}
+                                     onFinish={(process) => onProgressFinished(process)}/>, document.getElementById('cute-progress-bar'));
+};
+
+const onProgressFinished = (progressed) => {
+    console.log('onfinish: ' + progressed);
+};
+
+const onProgress = (progressed) => {
+    console.log('onprogress: ' + progressed);
 };
 
 new App();

@@ -13,7 +13,6 @@
 
 .cpb-progressed {
     float: left;
-    width: 20%;
     height: 20px;
     border-radius: 10px;
 }
@@ -26,7 +25,6 @@
 }
 
 .cpb-thumb {
-    opacity: 0.5;
     display: inline-block;
     width: 60px;
     height: 60px;

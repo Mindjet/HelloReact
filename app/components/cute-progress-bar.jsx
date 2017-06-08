@@ -1,11 +1,16 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../css/cute-progress-bar.css';
 
-let thumbColor = '#146365';
-let progressBackgroundColor = '#188183';
+const DEFAULT_THUMB_COLOR = '#146365';
+const DEFAULT_BACKGROUND_COLOR = '#188183';
+const DEFAULT_PROGRESSED_COLOR = '#146365';
+
+let thumbColor;
+let backgroundColor;
+let progressedColor;
+
 let onProgress = null;
 let onStart = null;
 let onFinish = null;
@@ -19,16 +24,27 @@ let progressBackground = null;
 let containerWidth;
 let containerLeft;
 let progressWholeLength;
-let progressedLength;
 let thumbWidth;
 let offset;
 
+let progressedPercentage;
 let moving = false;
 
 class CuteProgressBar extends React.Component {
 
     constructor(props) {
         super(props);
+        this.initProperty();
+    }
+
+    initProperty() {
+        progressedPercentage = this.props.progressed ? this.props.progressed : 0;
+        thumbColor = this.props.thumbColor ? this.props.thumbColor : DEFAULT_THUMB_COLOR;
+        backgroundColor = this.props.backgroundColor ? this.props.backgroundColor : DEFAULT_BACKGROUND_COLOR;
+        progressedColor = this.props.progressedColor ? this.props.progressedColor : DEFAULT_PROGRESSED_COLOR;
+        onStart = this.props.onStart;
+        onProgress = this.props.onProgress;
+        onFinish = this.props.onFinish;
     }
 
     componentDidMount() {
@@ -38,12 +54,23 @@ class CuteProgressBar extends React.Component {
         progressWhole = this.refs.cpbProgressWhole;
         progressBackground = this.refs.cpbProgressBackground;
 
+        this.initStyle();
+        this.doMeasurement();
+        this.initThumbPosition();
+        this.initDragEvent();
+    }
+
+    initStyle() {
         thumb.style.backgroundColor = thumbColor;
         thumb.style.cursor = 'pointer';
-        progressed.style.backgroundColor = progressBackgroundColor;
+        progressWhole.style.backgroundColor = backgroundColor;
+        progressed.style.backgroundColor = progressedColor;
+    }
 
-        this.doMeasurement();
-        this.initDragEvent();
+    initThumbPosition() {
+        thumb.style.left = containerLeft + progressedPercentage * (containerWidth - thumbWidth) + 'px';
+        console.log(progressedPercentage);
+        progressed.style.width = progressedPercentage * progressWholeLength + 'px';
     }
 
     doMeasurement() {
@@ -65,19 +92,28 @@ class CuteProgressBar extends React.Component {
     startDrag(e) {
         moving = true;
         offset = e.offsetX;
+        onStart && onStart();
     }
 
     onDragging(e) {
         if (!moving) return;
-        //edge detection.
         let thumbLeft = e.screenX - offset;
+        //constraint the moving range.
+
         thumbLeft = thumbLeft <= containerLeft ? containerLeft : thumbLeft;
-        thumbLeft = thumbLeft >= containerWidth - thumbWidth ? containerWidth - thumbWidth : thumbLeft;
-        thumb.style.left = thumbLeft + 'px';
+        thumbLeft = thumbLeft >= containerWidth - thumbWidth + containerLeft ? containerWidth - thumbWidth + containerLeft : thumbLeft;
+
+        //calculate the progress percentage
+        progressedPercentage = (thumbLeft - containerLeft) / (containerWidth - thumbWidth);
+        progressedPercentage = Math.round(progressedPercentage * 100) / 100;
+        progressed.style.width = progressedPercentage * progressWholeLength + 'px';
+        thumb.style.left = (containerWidth - thumbWidth) * progressedPercentage + containerLeft + 'px';
+        onProgress && onProgress(progressedPercentage);
     }
 
     endDrag(e) {
         moving = false;
+        onFinish && onFinish(progressedPercentage);
     }
 
 
