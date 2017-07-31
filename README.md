@@ -14,4 +14,5 @@
 
 ### ECMAScript6
 
-- [ECMAScript6 - let与const](./notes/ecmascript6/let-and-const.md)
+* [ECMAScript6 - let与const](./notes/ecmascript6/let-and-const.md)
+* [ECMAScript6 - 解构赋值](./notes/ecmascript6/destructuring.md)
