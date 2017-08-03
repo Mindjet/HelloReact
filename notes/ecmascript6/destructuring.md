@@ -84,5 +84,98 @@ let [x = defaultValue()] = [1];	//defaultValue函数不会被调用
 
 ## 对象的解构赋值
 
+对象也可以解构赋值，但是变量名必须与属性同名（无需考虑位置），才能取得正确的值。
+
+```javascript
+let {joan, nedd} = {joan: "snow", nedd: "stark"};
+//joan = "snow";
+//nedd = "stark";
+
+let {nedd, joan} = {joan: "snow", nedd: "stark"};
+//joan = "snow";
+//nedd = "stark";
+```
+
+如果变量名与属性名不一致，必须声明变量名与属性名的对应关系：
+
+```javascript
+let {bastard: name} = {bastard: "joan snow"};
+//name = "joan snow";
+```
+
+由此可见，对象的解构赋值其实是找到同名属性，然后将该属性的值付给相同属性的变量，所以一下两个语句是一样的：
+
+```javascript
+let {name} = {name: "joan snow"};
+let {name: name} = {name: "joan snow"};
+```
 
 
+
+## 字符串的解构赋值
+
+字符串的解构赋值，其实就是把字符串当做一个数组来处理：
+
+```javascript
+let [a, b, c, d] = "joan";
+//a = "j"
+//b = "o"
+//c = "a"
+//d = "n"
+
+//同时字符串对象还有一个 length 属性也可以取得
+let {length} = "joan";
+//length = 4
+```
+
+
+
+## 解构赋值的应用
+
+* 快速交换变量的值
+
+```javascript
+[x, y] = [y, x];
+```
+
+* 函数可以有多个返回值
+
+```javascript
+function multiReturnValue() {
+    return [1, 2, 3];
+}
+
+let [a, b, c] = multiReturnValue();
+
+
+function multiReturnValue() {
+    return {
+        name: 'joan snow',
+        family: 'stark'
+    }
+}
+
+let {name, family} = multiReturnValue();
+```
+
+* 提取JSON对象的数据
+
+```javascript
+let jsonData = {
+    name: 'joan snow',
+    family: "stark",
+    alias: "the king in the north"
+};
+let { name, family, alias } = jsonData;
+```
+
+* 快速获得函数中的方法
+
+```javascript
+//获得Math对象中的sin，cos和tan方法
+let {sin, cos, tan} = Math;
+```
+
+
+
+*部分内容参考自[《ECMAScript 6 入门》](http://es6.ruanyifeng.com/)*。
