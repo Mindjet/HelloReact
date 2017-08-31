@@ -3,7 +3,7 @@ import React from 'react';
 /**
  * A easy TextView component.
  */
-class TextView extends React.Component {
+export default class TextView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,5 +18,3 @@ class TextView extends React.Component {
     }
 
 }
-
-export default TextView;

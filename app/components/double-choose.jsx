@@ -143,14 +143,6 @@ export default class DoubleChoose extends React.Component {
         /**--------------end of new code-----------------**/
     }
 
-    window.onBackPressed = this.onBackPressed().bind(this);
-
-    onBackPressed(){
-        this.setState({
-           //xxx
-        });
-    }
-
     render() {
         return (
             <div>

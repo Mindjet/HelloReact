@@ -10,6 +10,7 @@
 ### React
 
 * [React基础 - 构建简单的组件](./notes/react/react-text-view.md)
+* [React基础 - 初尝](./notes/react/react-first-taste.md)
 
 
 ### ECMAScript6
