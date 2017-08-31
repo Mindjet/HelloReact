@@ -1,0 +1,45 @@
+.title {
+    font-weight: bold;
+    margin: 10px;
+}
+
+.item {
+    cursor: pointer;
+    display: inline-block;
+    /*background-color: #999;*/
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.button {
+    margin-top: 20px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e3e3e3;
+}
+
+/*const BG_COLOR_CHOSEN = '#ea5512';
+const BG_COLOR_NORMAL = '#c6c6c6';
+const BG_COLOR_DISABLED = '#eee';
+
+const FONT_COLOR_CHOSEN = 'white';
+const FONT_COLOR_NORMAL = 'black';
+const FONT_COLOR_DISABLED = '#999';*/
+
+.state-normal {
+    background-color: #c6c6c6;
+    color: black;
+}
+
+.state-chosen {
+    background-color: #ea5512;
+    color: white;
+}
+
+.state-disabled {
+    background-color: #eee;
+    color: #999;
+}
